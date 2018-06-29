@@ -1,5 +1,7 @@
 package main;
 
+//this is a test comment
+
 import controller.IJPaintController;
 import controller.JPaintController;
 import model.dialogs.DialogProvider;
