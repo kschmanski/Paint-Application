@@ -1,6 +1,7 @@
 package main;
 
-//this is a test comment
+//this is a test comment 7/3/2018 from CDM
+
 
 import controller.IJPaintController;
 import controller.JPaintController;
