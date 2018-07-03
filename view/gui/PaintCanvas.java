@@ -10,4 +10,6 @@ public class PaintCanvas extends JComponent {
     
         return (Graphics2D)getGraphics();
     }
+    
+    
 }

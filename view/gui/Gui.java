@@ -14,6 +14,7 @@ public class Gui implements IUiModule {
 
     public Gui(IGuiWindow gui) {
         this.gui = gui;
+
     }
     
 	@Override
@@ -34,4 +35,6 @@ public class Gui implements IUiModule {
                 ? (T)dialogSettings.getCurrentSelection()
                 : (T)selectedValue;
     }
+    
+
 }

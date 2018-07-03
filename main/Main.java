@@ -5,8 +5,7 @@ package main;
 
 import controller.IJPaintController;
 import controller.JPaintController;
-import model.dialogs.DialogProvider;
-import model.interfaces.IDialogProvider;
+import model.MouseHandler;
 import model.persistence.ApplicationState;
 import view.gui.Gui;
 import view.gui.GuiWindow;
@@ -17,6 +16,7 @@ import view.interfaces.IUiModule;
 public class Main {
     public static void main(String[] args){
     	PaintCanvas canvas = new PaintCanvas();
+    	canvas.addMouseListener(new MouseHandler());
         IGuiWindow guiWindow = new GuiWindow(canvas);
         IUiModule uiModule = new Gui(guiWindow);
         ApplicationState appState = new ApplicationState(uiModule);
