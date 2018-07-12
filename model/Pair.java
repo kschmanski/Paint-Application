@@ -3,24 +3,24 @@ package model;
 
 public class Pair {
 
-	int first;
-	int second;
+	int x;
+	int y;
 	
 	public Pair(int x, int y) {
-		this.first = x;
-		this.second = y;
+		this.x = x;
+		this.y = y;
 	}
 	
-	int getFirst() {
-		return this.first;
+	int getX() {
+		return this.x;
 	}
 	
-	int getSecond() {
-		return this.second;
+	int getY() {
+		return this.y;
 	}
 	
 	public void print() {
-		System.out.printf("(%d,%d)\n", this.first, this.second);
+		System.out.printf("(%d,%d)\n", this.x, this.y);
 	}
 	
 

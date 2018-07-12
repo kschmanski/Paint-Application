@@ -7,7 +7,7 @@ public class ShapeList {
 	public static void main(String[] args) {
 		
 		ArrayList<ShapeType> mylist = new ArrayList<ShapeType>();
-		mylist.add(ShapeType.RECTANGLE);
+		//mylist.add(ShapeType.RECTANGLE);
 		
 	}
 }
