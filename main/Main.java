@@ -14,10 +14,10 @@ import view.interfaces.IUiModule;
 public class Main {
     public static void main(String[] args){
     	PaintCanvas canvas = new PaintCanvas();
-    	canvas.addMouseListener(new MouseHandler());
         IGuiWindow guiWindow = new GuiWindow(canvas);
         IUiModule uiModule = new Gui(guiWindow);
         ApplicationState appState = new ApplicationState(uiModule);
+    	canvas.addMouseListener(new MouseHandler(appState));
         IJPaintController controller = new JPaintController(uiModule, appState);
         controller.setup();
     }

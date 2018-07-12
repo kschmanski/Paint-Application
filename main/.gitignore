@@ -1,1 +1,6 @@
 /Main.class
+/ICommand.class
+/DrawShapeCommand.class
+/DrawTriangleCommand.class
+/DrawRectangleCommand.class
+/DrawEllipseCommand.class
