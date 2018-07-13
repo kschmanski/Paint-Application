@@ -1,5 +1,8 @@
 package main;
 
+import java.awt.BasicStroke;
+import java.awt.Graphics2D;
+
 import model.Pair;
 import model.ShapeColor;
 import view.gui.PaintCanvas;
@@ -7,24 +10,34 @@ import view.gui.PaintCanvas;
 public class DrawEllipseCommand implements ICommand {
 	
 	private PaintCanvas canvas;
-	private ShapeColor color;
+	private ShapeColor primary_color;
+	private ShapeColor secondary_color;
 	private Pair starting_coords;
 	private Pair ending_coords;
 
-	public DrawEllipseCommand(PaintCanvas canvas, ShapeColor color, Pair starting_coords, Pair ending_coords) {
+	public DrawEllipseCommand(PaintCanvas canvas, ShapeColor primary_color, ShapeColor secondary_color, Pair starting_coords, Pair ending_coords) {
 		this.canvas = canvas;
-		this.color = color;
+		this.primary_color = primary_color;
+		this.secondary_color = secondary_color;
 		this.starting_coords = starting_coords;
 		this.ending_coords = ending_coords;
-		//run();
 		
 	}
 	
 	@Override
 	public void run() {
 		
+		int starting_x = Math.min(starting_coords.getX(), ending_coords.getX());
+		int starting_y = Math.min(starting_coords.getY(), ending_coords.getY());
+		int width = Math.max(ending_coords.getX() - starting_coords.getX(), starting_coords.getX() - ending_coords.getX());
+		int height = Math.max(ending_coords.getY() - starting_coords.getY(), starting_coords.getY() - ending_coords.getY());
 		
-		System.out.printf("we'll be printing an ellipse\n");
+		Graphics2D graphics2d = canvas.getGraphics2D();
+        graphics2d.setColor(primary_color.toColor(primary_color));
+        graphics2d.fillOval(starting_x, starting_y, width, height);
+        graphics2d.setStroke(new BasicStroke(5));
+        graphics2d.setColor(secondary_color.toColor(secondary_color));        
+        graphics2d.drawOval(starting_x, starting_y, width, height);
 		
 	}
 }

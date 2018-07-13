@@ -12,13 +12,13 @@ import view.gui.PaintCanvas;
 
 public class MouseHandler extends MouseAdapter  {
 	
-	PaintCanvas p;
+	PaintCanvas canvas;
 	ApplicationState a;
 	static Pair starting;
 	static Pair ending;
 	
-	public MouseHandler(PaintCanvas p, ApplicationState a) {
-		this.p = p;
+	public MouseHandler(PaintCanvas canvas, ApplicationState a) {
+		this.canvas = canvas;
 		this.a = a;
 	};
 	
@@ -38,19 +38,19 @@ public class MouseHandler extends MouseAdapter  {
 		int ending_y = e.getY();
 		ending = new Pair(ending_x, ending_y);
 		
-		ShapeColor c = a.getActivePrimaryColor();
-		//System.out.printf("the active color is %s", c.toString());
+		ShapeColor primary_color = a.getActivePrimaryColor();
+		ShapeColor secondary_color = a.getActiveSecondaryColor();
 		
 		//now create a new shape
 		switch(a.getActiveShapeType().toString()) {
 		case "TRIANGLE":
-			command = new DrawTriangleCommand(p, c, starting, ending);
+			command = new DrawTriangleCommand(canvas, primary_color, secondary_color, starting, ending);
 			break;
 		case "RECTANGLE":
-			command = new DrawRectangleCommand(p, c, starting, ending);
+			command = new DrawRectangleCommand(canvas, primary_color, secondary_color, starting, ending);
 			break;
 		case "ELLIPSE":
-			command = new DrawEllipseCommand(p, c, starting, ending);
+			command = new DrawEllipseCommand(canvas, primary_color, secondary_color, starting, ending);
 			break;
 		default:
 			throw new Error();

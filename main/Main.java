@@ -1,10 +1,5 @@
 package main;
 
-
-import java.awt.BasicStroke;
-import java.awt.Color;
-import java.awt.Graphics2D;
-
 import controller.IJPaintController;
 import controller.JPaintController;
 import model.MouseHandler;
@@ -24,6 +19,6 @@ public class Main {
     	canvas.addMouseListener(new MouseHandler(canvas, appState));
         IJPaintController controller = new JPaintController(uiModule, appState);
         controller.setup();
-       
+      
     }
 }
