@@ -8,14 +8,17 @@ import main.DrawRectangleCommand;
 import main.DrawTriangleCommand;
 import main.ICommand;
 import model.persistence.ApplicationState;
+import view.gui.PaintCanvas;
 
 public class MouseHandler extends MouseAdapter  {
 	
+	PaintCanvas p;
 	ApplicationState a;
-	Pair starting;
-	Pair ending;
+	static Pair starting;
+	static Pair ending;
 	
-	public MouseHandler(ApplicationState a) {
+	public MouseHandler(PaintCanvas p, ApplicationState a) {
+		this.p = p;
 		this.a = a;
 	};
 	
@@ -23,8 +26,7 @@ public class MouseHandler extends MouseAdapter  {
 	public void mousePressed(MouseEvent e) {
 		int starting_x = e.getX();
 		int starting_y = e.getY();
-		Pair starting = new Pair(starting_x, starting_y);
-		System.out.printf("mouse clicked at %d, %d\n", starting.getX(), starting.getY());
+		starting = new Pair(starting_x, starting_y);
 	
 	}
 	
@@ -34,19 +36,21 @@ public class MouseHandler extends MouseAdapter  {
 		ICommand command;
 		int ending_x = e.getX();
 		int ending_y = e.getY();
-		Pair ending = new Pair(ending_x, ending_y);
-		System.out.printf("mouse released at %d, %d\n", ending.getX(), ending.getY());
+		ending = new Pair(ending_x, ending_y);
+		
+		ShapeColor c = a.getActivePrimaryColor();
+		//System.out.printf("the active color is %s", c.toString());
+		
 		//now create a new shape
 		switch(a.getActiveShapeType().toString()) {
-		
 		case "TRIANGLE":
-			command = new DrawTriangleCommand(starting, ending);
+			command = new DrawTriangleCommand(p, c, starting, ending);
 			break;
 		case "RECTANGLE":
-			command = new DrawRectangleCommand(starting, ending);
+			command = new DrawRectangleCommand(p, c, starting, ending);
 			break;
 		case "ELLIPSE":
-			command = new DrawEllipseCommand(starting, ending);
+			command = new DrawEllipseCommand(p, c, starting, ending);
 			break;
 		default:
 			throw new Error();

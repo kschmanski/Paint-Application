@@ -1,6 +1,10 @@
 package main;
 
 
+import java.awt.BasicStroke;
+import java.awt.Color;
+import java.awt.Graphics2D;
+
 import controller.IJPaintController;
 import controller.JPaintController;
 import model.MouseHandler;
@@ -17,8 +21,9 @@ public class Main {
         IGuiWindow guiWindow = new GuiWindow(canvas);
         IUiModule uiModule = new Gui(guiWindow);
         ApplicationState appState = new ApplicationState(uiModule);
-    	canvas.addMouseListener(new MouseHandler(appState));
+    	canvas.addMouseListener(new MouseHandler(canvas, appState));
         IJPaintController controller = new JPaintController(uiModule, appState);
         controller.setup();
+       
     }
 }
