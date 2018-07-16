@@ -5,6 +5,7 @@ import java.awt.event.MouseEvent;
 
 import main.DrawEllipseCommand;
 import main.DrawRectangleCommand;
+import main.DrawShapeCommand;
 import main.DrawTriangleCommand;
 import main.ICommand;
 import model.persistence.ApplicationState;
@@ -33,30 +34,41 @@ public class MouseHandler extends MouseAdapter  {
 
 	@Override
 	public void mouseReleased(MouseEvent e) {
+		
 		ICommand command;
-		int ending_x = e.getX();
-		int ending_y = e.getY();
-		ending = new Pair(ending_x, ending_y);
 		
-		ShapeColor primary_color = a.getActivePrimaryColor();
-		ShapeColor secondary_color = a.getActiveSecondaryColor();
+		switch(a.getActiveStartAndEndPointMode().toString()) {
+		case "DRAW": {
+			ShapeConfiguration config = a.getCurrentShapeConfiguration();
+			//ShapeColor primary_color = a.getActivePrimaryColor();
+			//ShapeColor secondary_color = a.getActiveSecondaryColor();
+			int ending_x = e.getX();
+			int ending_y = e.getY();
+			ending = new Pair(ending_x, ending_y);
 		
-		//now create a new shape
-		switch(a.getActiveShapeType().toString()) {
-		case "TRIANGLE":
-			command = new DrawTriangleCommand(canvas, primary_color, secondary_color, starting, ending);
+			command = new DrawShapeCommand(canvas, config, starting, ending);
 			break;
-		case "RECTANGLE":
-			command = new DrawRectangleCommand(canvas, primary_color, secondary_color, starting, ending);
+		}
+		
+		// TO BE IMPLEMENTED SOON
+		/*
+		case "SELECT": 
+			
 			break;
-		case "ELLIPSE":
-			command = new DrawEllipseCommand(canvas, primary_color, secondary_color, starting, ending);
+			
+		case "MOVE":
+			
 			break;
+			*/
 		default:
 			throw new Error();
+		
 
 		}
+		
 		command.run();
+		
+		
 	}
 	
 	

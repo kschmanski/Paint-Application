@@ -4,3 +4,5 @@
 /DrawTriangleCommand.class
 /DrawRectangleCommand.class
 /DrawEllipseCommand.class
+/CommandHistory.class
+/Command.class

@@ -1,6 +1,7 @@
 package model.persistence;
 
 import model.ShapeColor;
+import model.ShapeConfiguration;
 import model.ShapeShadingType;
 import model.ShapeType;
 import model.StartAndEndPointMode;
@@ -83,5 +84,10 @@ public class ApplicationState implements IApplicationState {
         activeSecondaryColor = ShapeColor.GREEN;
         activeShapeShadingType = ShapeShadingType.FILLED_IN;
         activeStartAndEndPointMode = StartAndEndPointMode.DRAW;
+    }
+    
+    public ShapeConfiguration getCurrentShapeConfiguration() {
+    	return new ShapeConfiguration(getActiveShapeType(), getActivePrimaryColor(),
+    			getActiveSecondaryColor(), getActiveShapeShadingType());
     }
 }
