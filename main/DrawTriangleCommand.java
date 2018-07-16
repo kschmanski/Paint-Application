@@ -1,6 +1,7 @@
 package main;
 
 import java.awt.BasicStroke;
+import java.awt.Color;
 import java.awt.Graphics2D;
 
 import model.Pair;
@@ -31,11 +32,14 @@ public class DrawTriangleCommand implements ICommand {
 		int[] xpoints = { starting_coords.getX(), ending_coords.getX(), starting_coords.getX() - (ending_coords.getX() - starting_coords.getX()) };
 		int[] ypoints = { starting_coords.getY(), ending_coords.getY(), ending_coords.getY() };	
 		
-        graphics2d.setColor(config.getPrimaryColor().toColor(config.getPrimaryColor()));
-
+		if (config.getShadingType().toString() != "OUTLINE")
+			graphics2d.setColor(config.getPrimaryColor().toColor(config.getPrimaryColor()));
+		else
+			graphics2d.setColor(new Color(0, 0, 0, 0)); //transparent color
         graphics2d.fillPolygon(xpoints, ypoints, 3);
         graphics2d.setStroke(new BasicStroke(5));
-        graphics2d.setColor(config.getSecondaryColor().toColor(config.getSecondaryColor()));
+        if (config.getShadingType().toString() != "FILLED_IN")
+        	graphics2d.setColor(config.getSecondaryColor().toColor(config.getSecondaryColor()));
 
         graphics2d.drawPolygon(xpoints, ypoints, 3);
 

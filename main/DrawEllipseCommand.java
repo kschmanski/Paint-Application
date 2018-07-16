@@ -1,7 +1,9 @@
 package main;
 
 import java.awt.BasicStroke;
+import java.awt.Color;
 import java.awt.Graphics2D;
+
 import model.Pair;
 import model.ShapeConfiguration;
 import view.gui.PaintCanvas;
@@ -30,10 +32,14 @@ public class DrawEllipseCommand implements ICommand {
 		int height = Math.max(ending_coords.getY() - starting_coords.getY(), starting_coords.getY() - ending_coords.getY());
 		
 		Graphics2D graphics2d = canvas.getGraphics2D();
-        graphics2d.setColor(config.getPrimaryColor().toColor(config.getPrimaryColor()));
+		if (config.getShadingType().toString() != "OUTLINE")
+			graphics2d.setColor(config.getPrimaryColor().toColor(config.getPrimaryColor()));
+		else
+			graphics2d.setColor(new Color(0, 0, 0, 0)); //transparent color
         graphics2d.fillOval(starting_x, starting_y, width, height);
         graphics2d.setStroke(new BasicStroke(5));
-        graphics2d.setColor(config.getSecondaryColor().toColor(config.getSecondaryColor()));
+        if (config.getShadingType().toString() != "FILLED_IN")
+        	graphics2d.setColor(config.getSecondaryColor().toColor(config.getSecondaryColor()));
         graphics2d.drawOval(starting_x, starting_y, width, height);
 		
 	}

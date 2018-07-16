@@ -2,6 +2,7 @@ package model;
 
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.util.ArrayList;
 
 import main.DrawEllipseCommand;
 import main.DrawRectangleCommand;
@@ -40,13 +41,13 @@ public class MouseHandler extends MouseAdapter  {
 		switch(a.getActiveStartAndEndPointMode().toString()) {
 		case "DRAW": {
 			ShapeConfiguration config = a.getCurrentShapeConfiguration();
-			//ShapeColor primary_color = a.getActivePrimaryColor();
-			//ShapeColor secondary_color = a.getActiveSecondaryColor();
+		
 			int ending_x = e.getX();
 			int ending_y = e.getY();
 			ending = new Pair(ending_x, ending_y);
 		
 			command = new DrawShapeCommand(canvas, config, starting, ending);
+			
 			break;
 		}
 		

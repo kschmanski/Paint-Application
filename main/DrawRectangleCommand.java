@@ -1,6 +1,7 @@
 package main;
 
 import java.awt.BasicStroke;
+import java.awt.Color;
 import java.awt.Graphics2D;
 
 import model.Pair;
@@ -11,8 +12,7 @@ public class DrawRectangleCommand implements ICommand {
 	
 	private PaintCanvas canvas;
 	private ShapeConfiguration config;
-	//private ShapeColor primary_color;
-	//private ShapeColor secondary_color;
+	
 	private Pair starting_coords;
 	private Pair ending_coords;
 
@@ -20,8 +20,6 @@ public class DrawRectangleCommand implements ICommand {
 		this.starting_coords = starting_coords;
 		this.ending_coords = ending_coords;
 		this.canvas = canvas;
-		//this.primary_color = primary_color;
-	//	this.secondary_color = secondary_color;
 		this.config = config;
 	
 	}
@@ -37,11 +35,14 @@ public class DrawRectangleCommand implements ICommand {
 		int height = Math.max(ending_coords.getY() - starting_coords.getY(), starting_coords.getY() - ending_coords.getY());
 		
 		Graphics2D graphics2d = canvas.getGraphics2D();
-        graphics2d.setColor(config.getPrimaryColor().toColor(config.getPrimaryColor()));
-
+		if (config.getShadingType().toString() != "OUTLINE")
+			graphics2d.setColor(config.getPrimaryColor().toColor(config.getPrimaryColor()));
+		else
+			graphics2d.setColor(new Color(0, 0, 0, 0)); //transparent color
         graphics2d.fillRect(starting_x, starting_y, width, height);
         graphics2d.setStroke(new BasicStroke(5));
-        graphics2d.setColor(config.getSecondaryColor().toColor(config.getSecondaryColor()));
+        if (config.getShadingType().toString() != "FILLED_IN")
+        	graphics2d.setColor(config.getSecondaryColor().toColor(config.getSecondaryColor()));
 
         graphics2d.drawRect(starting_x, starting_y, width, height);
 
