@@ -29,7 +29,7 @@ public class DrawTriangleCommand implements ICommand {
 	public void run() {
 		Graphics2D graphics2d = canvas.getGraphics2D();
 	
-		int[] xpoints = { starting_coords.getX(), ending_coords.getX(), starting_coords.getX() - (ending_coords.getX() - starting_coords.getX()) };
+		int[] xpoints = { starting_coords.getX(), ending_coords.getX(), starting_coords.getX() };		
 		int[] ypoints = { starting_coords.getY(), ending_coords.getY(), ending_coords.getY() };	
 		
 		if (config.getShadingType().toString() != "OUTLINE")
