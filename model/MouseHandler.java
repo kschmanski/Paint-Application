@@ -2,12 +2,7 @@ package model;
 
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.util.ArrayList;
-
-import main.DrawEllipseCommand;
-import main.DrawRectangleCommand;
 import main.DrawShapeCommand;
-import main.DrawTriangleCommand;
 import main.ICommand;
 import model.persistence.ApplicationState;
 import view.gui.PaintCanvas;
@@ -18,6 +13,7 @@ public class MouseHandler extends MouseAdapter  {
 	ApplicationState a;
 	static Pair starting;
 	static Pair ending;
+	ShapeList my_shapelist = new ShapeList();
 	
 	public MouseHandler(PaintCanvas canvas, ApplicationState a) {
 		this.canvas = canvas;
@@ -41,13 +37,10 @@ public class MouseHandler extends MouseAdapter  {
 		switch(a.getActiveStartAndEndPointMode().toString()) {
 		case "DRAW": {
 			ShapeConfiguration config = a.getCurrentShapeConfiguration();
-		
 			int ending_x = e.getX();
 			int ending_y = e.getY();
 			ending = new Pair(ending_x, ending_y);
-		
-			command = new DrawShapeCommand(canvas, config, starting, ending);
-			
+			command = new DrawShapeCommand(canvas, config, my_shapelist, starting, ending);			
 			break;
 		}
 		

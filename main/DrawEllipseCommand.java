@@ -14,6 +14,7 @@ public class DrawEllipseCommand implements ICommand {
 	private ShapeConfiguration config;
 	private Pair starting_coords;
 	private Pair ending_coords;
+	
 
 	public DrawEllipseCommand(PaintCanvas canvas, ShapeConfiguration config, Pair starting_coords, Pair ending_coords) {
 		this.canvas = canvas;
@@ -41,6 +42,7 @@ public class DrawEllipseCommand implements ICommand {
         if (config.getShadingType().toString() != "FILLED_IN")
         	graphics2d.setColor(config.getSecondaryColor().toColor(config.getSecondaryColor()));
         graphics2d.drawOval(starting_x, starting_y, width, height);
+        
 		
 	}
 }
