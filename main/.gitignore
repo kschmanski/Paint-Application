@@ -6,3 +6,4 @@
 /DrawEllipseCommand.class
 /CommandHistory.class
 /Command.class
+/IInsertionObserver.class
