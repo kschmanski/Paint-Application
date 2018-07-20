@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import main.IInsertionObserver;
 
 //observer class
+//test comment
 public class ShapeDrawer implements IInsertionObserver {
 
 	@Override
