@@ -24,3 +24,10 @@ public class Main {
       
     }
 }
+
+
+/*
+ * Observer pattern for the ShapeDrawer class listening to ShapeList
+ * Dependency Injection passing the canvas (and other variables) around
+ * Command pattern for DrawEllipse, DrawRectangle, DrawTriangle etc
+ */
