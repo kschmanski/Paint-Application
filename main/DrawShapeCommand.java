@@ -24,26 +24,6 @@ public class DrawShapeCommand implements ICommand {
 	
 	@Override
 	public void run() {
-
-	ICommand command;
-	
-	my_shapelist.add(config, starting_coords, ending_coords);
-
-	switch(config.getCurrentShapeType().toString()) {
-		case "TRIANGLE":
-			command = new DrawTriangleCommand(canvas, config, starting_coords, ending_coords);
-			break;
-		case "RECTANGLE":
-			command = new DrawRectangleCommand(canvas, config, starting_coords, ending_coords);
-			break;
-		case "ELLIPSE":
-			command = new DrawEllipseCommand(canvas, config, starting_coords, ending_coords);
-			break;
-		default:
-			throw new Error();
-		
-		
-}
-	command.run();
+		my_shapelist.add(config, starting_coords, ending_coords);
 	}
 }

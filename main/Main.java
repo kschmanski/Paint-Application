@@ -3,6 +3,7 @@ package main;
 import controller.IJPaintController;
 import controller.JPaintController;
 import model.MouseHandler;
+import model.ShapeList;
 import model.persistence.ApplicationState;
 import view.gui.Gui;
 import view.gui.GuiWindow;
@@ -16,7 +17,8 @@ public class Main {
         IGuiWindow guiWindow = new GuiWindow(canvas);
         IUiModule uiModule = new Gui(guiWindow);
         ApplicationState appState = new ApplicationState(uiModule);
-    	canvas.addMouseListener(new MouseHandler(canvas, appState));
+    	ShapeList my_shapelist = new ShapeList(canvas);
+    	canvas.addMouseListener(new MouseHandler(canvas, appState, my_shapelist));
         IJPaintController controller = new JPaintController(uiModule, appState);
         controller.setup();
       

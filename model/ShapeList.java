@@ -2,15 +2,20 @@ package model;
 
 import java.util.ArrayList;
 
+import view.gui.PaintCanvas;
+
 //subject class to inform observer
 public class ShapeList {
 	
+	PaintCanvas canvas;
 	ArrayList<ShapeConfiguration> list_of_shapes;
 	ArrayList<Pair> list_of_starting_coordinates;
 	ArrayList<Pair> list_of_ending_coordinates;
 	ShapeDrawer sd = new ShapeDrawer();
+	
 	//constructor
-	public ShapeList() {
+	public ShapeList(PaintCanvas canvas) {
+		this.canvas = canvas;
 		list_of_shapes = new ArrayList<ShapeConfiguration>();
 		list_of_starting_coordinates = new ArrayList<Pair>();
 		list_of_ending_coordinates = new ArrayList<Pair>();
@@ -24,7 +29,7 @@ public class ShapeList {
 	}
 	
 	public void notifyObservers() {
-		sd.update(list_of_shapes, list_of_starting_coordinates, list_of_ending_coordinates);
+		sd.update(canvas, list_of_shapes, list_of_starting_coordinates, list_of_ending_coordinates);
 	}
 	
 }

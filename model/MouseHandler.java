@@ -9,15 +9,17 @@ import view.gui.PaintCanvas;
 
 public class MouseHandler extends MouseAdapter  {
 	
+	
 	PaintCanvas canvas;
 	ApplicationState a;
+	ShapeList s;
 	static Pair starting;
 	static Pair ending;
-	ShapeList my_shapelist = new ShapeList();
 	
-	public MouseHandler(PaintCanvas canvas, ApplicationState a) {
+	public MouseHandler(PaintCanvas canvas, ApplicationState a, ShapeList s) {
 		this.canvas = canvas;
 		this.a = a;
+		this.s = s;
 	};
 	
 	@Override
@@ -40,7 +42,7 @@ public class MouseHandler extends MouseAdapter  {
 			int ending_x = e.getX();
 			int ending_y = e.getY();
 			ending = new Pair(ending_x, ending_y);
-			command = new DrawShapeCommand(canvas, config, my_shapelist, starting, ending);			
+			command = new DrawShapeCommand(canvas, config, s, starting, ending);			
 			break;
 		}
 		
