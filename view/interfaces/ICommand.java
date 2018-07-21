@@ -1,4 +1,4 @@
-package main;
+package view.interfaces;
 
 public interface ICommand {
 

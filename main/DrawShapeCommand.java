@@ -4,6 +4,7 @@ import model.Pair;
 import model.ShapeConfiguration;
 import model.ShapeList;
 import view.gui.PaintCanvas;
+import view.interfaces.ICommand;
 
 public class DrawShapeCommand implements ICommand {
 	

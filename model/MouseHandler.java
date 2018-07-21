@@ -3,9 +3,9 @@ package model;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import main.DrawShapeCommand;
-import main.ICommand;
 import model.persistence.ApplicationState;
 import view.gui.PaintCanvas;
+import view.interfaces.ICommand;
 
 public class MouseHandler extends MouseAdapter  {
 	

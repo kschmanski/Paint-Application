@@ -1,5 +1,7 @@
 package main;
 
+import view.interfaces.ICommand;
+
 public class Command implements ICommand {
 
 	Command command;

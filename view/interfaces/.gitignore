@@ -2,3 +2,5 @@
 /IEventCallback.class
 /IGuiWindow.class
 /IUiModule.class
+/ICommand.class
+/IInsertionObserver.class

@@ -5,9 +5,9 @@ import java.util.ArrayList;
 import main.DrawEllipseCommand;
 import main.DrawRectangleCommand;
 import main.DrawTriangleCommand;
-import main.ICommand;
-import main.IInsertionObserver;
 import view.gui.PaintCanvas;
+import view.interfaces.ICommand;
+import view.interfaces.IInsertionObserver;
 
 //observer class
 public class ShapeDrawer implements IInsertionObserver {

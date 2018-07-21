@@ -7,6 +7,7 @@ import java.awt.Graphics2D;
 import model.Pair;
 import model.ShapeConfiguration;
 import view.gui.PaintCanvas;
+import view.interfaces.ICommand;
 
 public class DrawEllipseCommand implements ICommand {
 	
