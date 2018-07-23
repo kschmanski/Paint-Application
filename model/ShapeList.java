@@ -32,4 +32,17 @@ public class ShapeList {
 		sd.update(canvas, list_of_shapes, list_of_starting_coordinates, list_of_ending_coordinates);
 	}
 	
+	public ArrayList<ShapeConfiguration> get_list_of_shapes() {
+		return list_of_shapes;
+	}
+	
+	public ArrayList<Pair> get_list_of_starting_coordinates() {
+		return list_of_starting_coordinates;
+	}
+
+	public ArrayList<Pair> get_list_of_ending_coordinates() {
+		return list_of_ending_coordinates;
+	}
+	
+	
 }

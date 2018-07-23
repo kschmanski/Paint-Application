@@ -1,7 +1,10 @@
 package model;
 
+import java.awt.Rectangle;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+
+import main.AddSelectedShapesCommand;
 import main.DrawShapeCommand;
 import model.persistence.ApplicationState;
 import view.gui.PaintCanvas;
@@ -47,11 +50,23 @@ public class MouseHandler extends MouseAdapter  {
 		}
 		
 		// TO BE IMPLEMENTED SOON
-		/*
-		case "SELECT": 
+		
+		case "SELECT":
+			ShapeConfiguration config = a.getCurrentShapeConfiguration();
+			int ending_x = e.getX();
+			int ending_y = e.getY();
+			ending = new Pair(ending_x, ending_y);
+			int starting_x = Math.min(starting.getX(), ending.getX());
+			int starting_y = Math.min(starting.getY(), ending.getY());
+			int width = Math.max(ending.getX() - starting.getX(), starting.getX() - ending.getX());
+			int height = Math.max(ending.getY() - starting.getY(), starting.getY() - ending.getY());
 			
+			Rectangle selection_area = new Rectangle(starting_x, starting_y, width, height);
+			CollisionDetector cd = new CollisionDetector(selection_area,s);
+			
+			command = new AddSelectedShapesCommand(starting, ending, s);
 			break;
-			
+		/*	
 		case "MOVE":
 			
 			break;
