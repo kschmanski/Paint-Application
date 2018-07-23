@@ -64,6 +64,18 @@ public class MouseHandler extends MouseAdapter  {
 			Rectangle selection_area = new Rectangle(starting_x, starting_y, width, height);
 			CollisionDetector cd = new CollisionDetector(selection_area,s);
 			
+			Pair g = new Pair(starting_x, starting_y);
+			Pair f = new Pair(ending_x, ending_y);
+			int counter = 0;
+			int num_selected_shapes = 0;
+			while (counter < s.list_of_shapes.size()) {
+				if (cd.collides(s.list_of_starting_coordinates.get(counter), s.list_of_ending_coordinates.get(counter), 
+						g, f))
+					num_selected_shapes++;
+				counter++;
+			}
+			
+			System.out.printf("we've selected %d shapes\n", num_selected_shapes);
 			command = new AddSelectedShapesCommand(starting, ending, s);
 			break;
 		/*	

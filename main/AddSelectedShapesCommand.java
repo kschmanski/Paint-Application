@@ -26,7 +26,7 @@ public class AddSelectedShapesCommand implements ICommand {
 		
 		
 		num_selected_shapes = s.get_list_of_shapes().size();
-		System.out.printf("we've selected %d shapes!\n", num_selected_shapes);
+		//System.out.printf("we've selected %d shapes!\n", num_selected_shapes);
 		
 		
 	}
