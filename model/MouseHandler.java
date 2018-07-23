@@ -3,6 +3,7 @@ package model;
 import java.awt.Rectangle;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.util.ArrayList;
 
 import main.AddSelectedShapesCommand;
 import main.DrawShapeCommand;
@@ -66,12 +67,14 @@ public class MouseHandler extends MouseAdapter  {
 			
 			Pair g = new Pair(starting_x, starting_y);
 			Pair f = new Pair(ending_x, ending_y);
+			ArrayList<ShapeConfiguration> al = new ArrayList<ShapeConfiguration>();
 			int counter = 0;
 			int num_selected_shapes = 0;
 			while (counter < s.list_of_shapes.size()) {
-				if (cd.collides(s.list_of_starting_coordinates.get(counter), s.list_of_ending_coordinates.get(counter), 
-						g, f))
+				if (cd.collides(s.list_of_starting_coordinates.get(counter), s.list_of_ending_coordinates.get(counter), g, f)) {
 					num_selected_shapes++;
+					al.add(s.list_of_shapes.get(counter));
+				}
 				counter++;
 			}
 			
@@ -95,15 +98,4 @@ public class MouseHandler extends MouseAdapter  {
 		
 	}
 	
-	
-	
-	
 	}
-
-//drawshape command -> then run it w/ X,Y coords
-//check StartandEndPointMode on MouseRelease - if select, create a select command.
-//if move, create move command. etc.  But for now, just create a createshape command
-//CreateShape command calls Run -> creates a shape that contains the start point and end point,
-//primary color, secondary color, and the shading type.
-//Use strategy pattern to show how we'll draw the shape
-//add this newly created shape to the ShapeList (ShapeList could use Observer pattern)
