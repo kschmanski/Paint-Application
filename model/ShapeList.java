@@ -8,9 +8,9 @@ import view.gui.PaintCanvas;
 public class ShapeList {
 	
 	PaintCanvas canvas;
-	ArrayList<ShapeConfiguration> list_of_shapes;
-	ArrayList<Pair> list_of_starting_coordinates;
-	ArrayList<Pair> list_of_ending_coordinates;
+	public ArrayList<ShapeConfiguration> list_of_shapes;
+	public ArrayList<Pair> list_of_starting_coordinates;
+	public ArrayList<Pair> list_of_ending_coordinates;
 	ShapeDrawer sd = new ShapeDrawer();
 	
 	//constructor
