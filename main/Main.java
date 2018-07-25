@@ -1,5 +1,6 @@
 package main;
 
+
 import controller.IJPaintController;
 import controller.JPaintController;
 import model.MouseHandler;
@@ -22,6 +23,7 @@ public class Main {
         IJPaintController controller = new JPaintController(uiModule, appState);
         controller.setup();
       
+     
     }
 }
 

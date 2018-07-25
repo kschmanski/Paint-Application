@@ -71,7 +71,8 @@ public class MouseHandler extends MouseAdapter  {
 			int counter = 0;
 			int num_selected_shapes = 0;
 			while (counter < s.list_of_shapes.size()) {
-				if (cd.collides(s.list_of_starting_coordinates.get(counter), s.list_of_ending_coordinates.get(counter), g, f)) {
+				if (cd.collides(
+						s.list_of_starting_coordinates.get(counter), s.list_of_ending_coordinates.get(counter), g, f)) {
 					num_selected_shapes++;
 					al.add(s.list_of_shapes.get(counter));
 				}
