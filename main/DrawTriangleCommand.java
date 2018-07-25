@@ -12,7 +12,6 @@ import view.interfaces.ICommand;
 public class DrawTriangleCommand implements ICommand {
 
 	private PaintCanvas canvas;
-
 	private ShapeConfiguration config;
 	private Pair starting_coords;
 	private Pair ending_coords;
@@ -39,8 +38,10 @@ public class DrawTriangleCommand implements ICommand {
 			graphics2d.setColor(new Color(0, 0, 0, 0)); //transparent color
         graphics2d.fillPolygon(xpoints, ypoints, 3);
         graphics2d.setStroke(new BasicStroke(5));
-        if (config.getShadingType().toString() != "FILLED_IN")
+        if (config.getShadingType().toString() == "OUTLINE_AND_FILLED_IN")
         	graphics2d.setColor(config.getSecondaryColor().toColor(config.getSecondaryColor()));
+        else if (config.getShadingType().toString() == "OUTLINE")
+        	graphics2d.setColor(config.getPrimaryColor().toColor(config.getPrimaryColor()));
 
         graphics2d.drawPolygon(xpoints, ypoints, 3);
 

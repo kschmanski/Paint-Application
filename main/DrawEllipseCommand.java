@@ -40,8 +40,10 @@ public class DrawEllipseCommand implements ICommand {
 			graphics2d.setColor(new Color(0, 0, 0, 0)); //transparent color
         graphics2d.fillOval(starting_x, starting_y, width, height);
         graphics2d.setStroke(new BasicStroke(5));
-        if (config.getShadingType().toString() != "FILLED_IN")
+        if (config.getShadingType().toString() == "OUTLINE_AND_FILLED_IN")
         	graphics2d.setColor(config.getSecondaryColor().toColor(config.getSecondaryColor()));
+        else if (config.getShadingType().toString() == "OUTLINE")
+        	graphics2d.setColor(config.getPrimaryColor().toColor(config.getPrimaryColor()));
         graphics2d.drawOval(starting_x, starting_y, width, height);
         
 		

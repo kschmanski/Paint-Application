@@ -12,12 +12,12 @@ public class CollisionDetector {
 		this.shapelist = shapelist;
 	}
 
+	//returns true if the selection area intersects with the shape in question
 	public boolean collides(Pair l1, Pair r1, Pair l2, Pair r2) {
 		boolean toReturn = true;
 		
 		//l2, r2 is for selected area
 		//l1, r1 is for drawn shape
-		
 
 		if (Math.min(l1.getX(), r1.getX()) >  r2.getX() || l2.getX() > Math.max(r1.getX(), l1.getX()))
 			toReturn = false;

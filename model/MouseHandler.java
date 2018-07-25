@@ -51,7 +51,6 @@ public class MouseHandler extends MouseAdapter  {
 		}
 		
 	
-		
 		case "SELECT": {
 			int ending_x = e.getX();
 			int ending_y = e.getY();
@@ -74,13 +73,11 @@ public class MouseHandler extends MouseAdapter  {
 		}
 		
 		default:
-			throw new Error();
-		
+			throw new Error();	
 
 		}
 		
 		command.run();
-		
 		
 		
 	}

@@ -49,10 +49,7 @@ public class AddSelectedShapesCommand implements ICommand {
 						my_shapelist.list_of_ending_coordinates.get(counter));
 			}
 			counter++;
-		}
-		
-		//System.out.printf("we now have %d shapes selected\n", selected_shapelist.list_of_starting_coordinates.size());
-		
+		}		
 		
 	}
 	
