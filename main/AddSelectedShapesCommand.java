@@ -2,11 +2,9 @@ package main;
 
 
 import java.awt.Rectangle;
-import java.util.ArrayList;
 
 import model.CollisionDetector;
 import model.Pair;
-import model.ShapeConfiguration;
 import model.ShapeList;
 import view.interfaces.ICommand;
 
@@ -15,12 +13,13 @@ public class AddSelectedShapesCommand implements ICommand {
 	Pair starting;
 	Pair ending;
 	ShapeList my_shapelist;
-	ShapeList selected_shapes;
+	ShapeList selected_shapelist;
 	
-	public AddSelectedShapesCommand (Pair starting, Pair ending, ShapeList my_shapelist) {
+	public AddSelectedShapesCommand (Pair starting, Pair ending, ShapeList my_shapelist, ShapeList selected_shapelist) {
 		this.starting = starting;
 		this.ending = ending;
 		this.my_shapelist = my_shapelist;
+		this.selected_shapelist = selected_shapelist;
 	}
 	
 	@Override
@@ -42,22 +41,23 @@ public class AddSelectedShapesCommand implements ICommand {
 		Pair lower_selection_area_boundary = new Pair(min_x, min_y);
 		Pair higher_selection_area_boundary = new Pair(max_x, max_y);
 		
-		
-		ArrayList<ShapeConfiguration> selected_shapes = new ArrayList<ShapeConfiguration>();
 		int counter = 0;
 		while (counter < my_shapelist.list_of_shapes.size()) {
 			if (cd.collides(my_shapelist.list_of_starting_coordinates.get(counter), my_shapelist.list_of_ending_coordinates.get(counter), lower_selection_area_boundary, higher_selection_area_boundary)) {
 					
-				selected_shapes.add(my_shapelist.list_of_shapes.get(counter));
+				selected_shapelist.add(my_shapelist.list_of_shapes.get(counter), my_shapelist.list_of_starting_coordinates.get(counter),
+						my_shapelist.list_of_ending_coordinates.get(counter));
 			}
 			counter++;
 		}
+		
+		//System.out.printf("we now have %d shapes selected\n", selected_shapelist.list_of_starting_coordinates.size());
 		
 		
 	}
 	
 	public ShapeList getSelectedShapes() {
-		return selected_shapes;
+		return selected_shapelist;
 	}
 
 }

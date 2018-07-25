@@ -5,6 +5,7 @@ import java.awt.event.MouseEvent;
 
 import main.AddSelectedShapesCommand;
 import main.DrawShapeCommand;
+import main.MoveSelectedShapesCommand;
 import model.persistence.ApplicationState;
 import view.gui.PaintCanvas;
 import view.interfaces.ICommand;
@@ -15,6 +16,7 @@ public class MouseHandler extends MouseAdapter  {
 	PaintCanvas canvas;
 	ApplicationState a;
 	ShapeList my_shapelist;
+	ShapeList selected_shapelist;
 	static Pair starting;
 	static Pair ending;
 	
@@ -50,19 +52,26 @@ public class MouseHandler extends MouseAdapter  {
 		
 	
 		
-		case "SELECT":
+		case "SELECT": {
 			int ending_x = e.getX();
 			int ending_y = e.getY();
 			ending = new Pair(ending_x, ending_y);
-			command = new AddSelectedShapesCommand(starting, ending, my_shapelist);
+			selected_shapelist = new ShapeList(canvas);
+			command = new AddSelectedShapesCommand(starting, ending, my_shapelist, selected_shapelist);
 			break;
+		}
 			
 		// TO BE IMPLEMENTED SOON
-		/*
-		case "MOVE":
+		
+		case "MOVE": {
+			int ending_x = e.getX();
+			int ending_y = e.getY();
+			ending = new Pair(ending_x, ending_y);
 			
+			command = new MoveSelectedShapesCommand(canvas, starting, ending, my_shapelist, selected_shapelist);
 			break;
-			*/
+			
+		}
 		
 		default:
 			throw new Error();
@@ -71,6 +80,7 @@ public class MouseHandler extends MouseAdapter  {
 		}
 		
 		command.run();
+		
 		
 		
 	}
