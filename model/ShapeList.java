@@ -42,6 +42,8 @@ public class ShapeList {
 	
 	public void delete(ShapeConfiguration config, Pair starting, Pair ending) {
 		int place = getArrayLocation(config, starting, ending);
+		
+		//need some kind of error handling for not deleting anything
 		list_of_shapes.remove(place);
 		list_of_starting_coordinates.remove(place);
 		list_of_ending_coordinates.remove(place);
@@ -79,7 +81,7 @@ public class ShapeList {
 				return i;
 		}
 		
-		return 0;
+		return -1;
 	}
 	
 	
