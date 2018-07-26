@@ -30,8 +30,7 @@ public class MouseHandler extends MouseAdapter  {
 	public void mousePressed(MouseEvent e) {
 		int starting_x = e.getX();
 		int starting_y = e.getY();
-		starting = new Pair(starting_x, starting_y);
-	
+		starting = new Pair(starting_x, starting_y);	
 	}
 	
 

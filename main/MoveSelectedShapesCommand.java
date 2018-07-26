@@ -1,6 +1,7 @@
 package main;
 
 import model.Pair;
+import model.ShapeConfiguration;
 import model.ShapeList;
 import view.gui.PaintCanvas;
 import view.interfaces.ICommand;
@@ -24,8 +25,17 @@ public class MoveSelectedShapesCommand implements ICommand {
 	
 	@Override
 	public void run() {
-		System.out.printf("we'll be moving %d shapes!\n", selected_shapelist.list_of_shapes.size());
 		
+		//for each shape - move it by the amount moved using the move command:
+		//for example, if we click and move 10 pixels down, each shape selected should move 10 pixels down
+		
+		int delta_x = ending.getX() - starting.getX();
+		int delta_y = ending.getY() - starting.getY();
+		
+		for (ShapeConfiguration sc : selected_shapelist.get_list_of_shapes()) {
+			System.out.printf("we'll be moving shape %s by x: %d y: %d\n", sc.getCurrentShapeType().toString(), delta_x, delta_y);
+						
+		}
 	}
 
 }

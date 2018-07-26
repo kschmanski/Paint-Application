@@ -44,5 +44,20 @@ public class ShapeList {
 		return list_of_ending_coordinates;
 	}
 	
+	public int getArrayLocation(ShapeConfiguration config, Pair starting, Pair ending) {
+		int i;
+		for (i = 0; i < list_of_shapes.size(); i++) {
+			if (config.toString() != list_of_shapes.get(i).toString()
+					|| starting.getX() != list_of_starting_coordinates.get(i).getX()
+					|| starting.getY() != list_of_starting_coordinates.get(i).getY()
+					|| ending.getX() != list_of_ending_coordinates.get(i).getX()
+					|| ending.getY() != list_of_ending_coordinates.get(i).getY()
+					)
+				i++;
+		}
+		
+		return i;
+	}
+	
 	
 }
