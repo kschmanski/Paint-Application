@@ -22,6 +22,7 @@ public class DeleteShapeCommand implements ICommand {
 			my_shapelist.notifyObservers();
 		}
 		
+		selected_shapelist.clear();
 	}
 		
 		

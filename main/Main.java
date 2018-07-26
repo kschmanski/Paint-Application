@@ -18,10 +18,15 @@ public class Main {
         IGuiWindow guiWindow = new GuiWindow(canvas);
         IUiModule uiModule = new Gui(guiWindow);
         ApplicationState appState = new ApplicationState(uiModule);
+        
+        //should create a holder class for these three shapelists
+        
     	ShapeList my_shapelist = new ShapeList(canvas);
     	ShapeList selected_shapelist = new ShapeList(canvas);
+    	ShapeList clipboard_shapelist = new ShapeList(canvas);
+    	
     	canvas.addMouseListener(new MouseHandler(canvas, appState, my_shapelist, selected_shapelist));
-        IJPaintController controller = new JPaintController(uiModule, appState, my_shapelist, selected_shapelist);
+        IJPaintController controller = new JPaintController(uiModule, appState, my_shapelist, selected_shapelist, clipboard_shapelist);
         controller.setup();
       
      

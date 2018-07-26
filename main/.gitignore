@@ -10,3 +10,4 @@
 /AddSelectedShapesCommand.class
 /MoveSelectedShapesCommand.class
 /DeleteShapeCommand.class
+/CopyShapeCommand.class
