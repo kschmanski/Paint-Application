@@ -17,7 +17,7 @@ public class DeleteShapeCommand implements ICommand {
 
 		int counter;
 		for (counter = 0; counter < selected_shapelist.get_list_of_shapes().size(); counter++) {
-			my_shapelist.delete(selected_shapelist.get_list_of_shapes().get(0), selected_shapelist.get_list_of_starting_coordinates().get(0), selected_shapelist.get_list_of_ending_coordinates().get(0));
+			my_shapelist.delete(selected_shapelist.get_list_of_shapes().get(counter), selected_shapelist.get_list_of_starting_coordinates().get(counter), selected_shapelist.get_list_of_ending_coordinates().get(counter));
 			my_shapelist.notifyObservers();
 		}
 		
