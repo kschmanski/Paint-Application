@@ -9,3 +9,4 @@
 /IInsertionObserver.class
 /AddSelectedShapesCommand.class
 /MoveSelectedShapesCommand.class
+/DeleteShapeCommand.class

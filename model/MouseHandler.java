@@ -20,10 +20,11 @@ public class MouseHandler extends MouseAdapter  {
 	static Pair starting;
 	static Pair ending;
 	
-	public MouseHandler(PaintCanvas canvas, ApplicationState a, ShapeList my_shapelist) {
+	public MouseHandler(PaintCanvas canvas, ApplicationState a, ShapeList my_shapelist, ShapeList selected_shapelist) {
 		this.canvas = canvas;
 		this.a = a;
 		this.my_shapelist = my_shapelist;
+		this.selected_shapelist = selected_shapelist;
 	};
 	
 	@Override
@@ -46,12 +47,12 @@ public class MouseHandler extends MouseAdapter  {
 		
 		case "DRAW": {
 			ShapeConfiguration config = a.getCurrentShapeConfiguration();
-			command = new DrawShapeCommand(canvas, config, my_shapelist, starting, ending);			
+			command = new DrawShapeCommand(canvas, config, my_shapelist, starting, ending);	
 			break;
 		}
 	
 		case "SELECT": {
-			selected_shapelist = new ShapeList(canvas);
+			selected_shapelist.clear();
 			command = new AddSelectedShapesCommand(starting, ending, my_shapelist, selected_shapelist);
 			break;
 		}

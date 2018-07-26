@@ -24,6 +24,7 @@ public class ShapeList {
 		list_of_shapes.add(config);
 		list_of_starting_coordinates.add(starting);
 		list_of_ending_coordinates.add(ending);	
+
 		notifyObservers();
 	}
 	
@@ -45,6 +46,12 @@ public class ShapeList {
 		list_of_starting_coordinates.remove(place);
 		list_of_ending_coordinates.remove(place);
 		notifyObservers();
+	}
+	
+	public void clear() {
+		list_of_shapes.clear();
+		list_of_starting_coordinates.clear();
+		list_of_ending_coordinates.clear();
 	}
 	
 	public ArrayList<ShapeConfiguration> get_list_of_shapes() {
@@ -72,7 +79,7 @@ public class ShapeList {
 				return i;
 		}
 		
-		return -1;
+		return 0;
 	}
 	
 	
