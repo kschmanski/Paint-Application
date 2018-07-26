@@ -38,34 +38,25 @@ public class MouseHandler extends MouseAdapter  {
 	public void mouseReleased(MouseEvent e) {
 		
 		ICommand command;
+		int ending_x = e.getX();
+		int ending_y = e.getY();
+		ending = new Pair(ending_x, ending_y);
 		
 		switch(a.getActiveStartAndEndPointMode().toString()) {
+		
 		case "DRAW": {
 			ShapeConfiguration config = a.getCurrentShapeConfiguration();
-			int ending_x = e.getX();
-			int ending_y = e.getY();
-			ending = new Pair(ending_x, ending_y);
 			command = new DrawShapeCommand(canvas, config, my_shapelist, starting, ending);			
 			break;
 		}
-		
 	
 		case "SELECT": {
-			int ending_x = e.getX();
-			int ending_y = e.getY();
-			ending = new Pair(ending_x, ending_y);
 			selected_shapelist = new ShapeList(canvas);
 			command = new AddSelectedShapesCommand(starting, ending, my_shapelist, selected_shapelist);
 			break;
 		}
 			
-		// TO BE IMPLEMENTED SOON
-		
 		case "MOVE": {
-			int ending_x = e.getX();
-			int ending_y = e.getY();
-			ending = new Pair(ending_x, ending_y);
-			
 			command = new MoveSelectedShapesCommand(canvas, starting, ending, my_shapelist, selected_shapelist);
 			break;
 			

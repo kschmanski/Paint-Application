@@ -45,7 +45,7 @@ public class AddSelectedShapesCommand implements ICommand {
 		while (counter < my_shapelist.list_of_shapes.size()) {
 			if (cd.collides(my_shapelist.list_of_starting_coordinates.get(counter), my_shapelist.list_of_ending_coordinates.get(counter), lower_selection_area_boundary, higher_selection_area_boundary)) {
 					
-				selected_shapelist.add(my_shapelist.list_of_shapes.get(counter), my_shapelist.list_of_starting_coordinates.get(counter),
+				selected_shapelist.add_selection(my_shapelist.list_of_shapes.get(counter), my_shapelist.list_of_starting_coordinates.get(counter),
 						my_shapelist.list_of_ending_coordinates.get(counter));
 			}
 			counter++;

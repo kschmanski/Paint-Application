@@ -1,5 +1,7 @@
 package model;
 
+import java.awt.Color;
+import java.awt.Graphics2D;
 import java.util.ArrayList;
 
 import main.DrawEllipseCommand;
@@ -17,7 +19,12 @@ public class ShapeDrawer implements IInsertionObserver {
 		
 		ICommand command;
 		int counter = 0;
-		
+		Graphics2D graphics2d = canvas.getGraphics2D();
+		graphics2d.setColor(Color.WHITE); //white color
+        graphics2d.fillRect(0, 0, 10000, 10000);
+      
+        
+        
 		//iterates over the list of our shapes to draw them on the canvas
 		while (counter < list_of_shapes.size()) {
 		
