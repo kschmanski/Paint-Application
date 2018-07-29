@@ -11,3 +11,4 @@
 /MoveSelectedShapesCommand.class
 /DeleteShapeCommand.class
 /CopyShapeCommand.class
+/PasteShapeCommand.class

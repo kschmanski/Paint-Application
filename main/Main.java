@@ -26,7 +26,7 @@ public class Main {
     	ShapeList clipboard_shapelist = new ShapeList(canvas);
     	
     	canvas.addMouseListener(new MouseHandler(canvas, appState, my_shapelist, selected_shapelist));
-        IJPaintController controller = new JPaintController(uiModule, appState, my_shapelist, selected_shapelist, clipboard_shapelist);
+        IJPaintController controller = new JPaintController(uiModule, appState, my_shapelist, selected_shapelist, clipboard_shapelist, canvas);
         controller.setup();
       
      
