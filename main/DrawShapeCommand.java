@@ -40,7 +40,7 @@ public class DrawShapeCommand implements ICommand, IUndoable {
 
 	@Override
 	public void redo() {
-		my_shapelist.add(config, starting_coords, ending_coords);
+		run();
 		
 	}
 }
