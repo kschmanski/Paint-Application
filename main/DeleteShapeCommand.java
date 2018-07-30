@@ -2,8 +2,9 @@ package main;
 
 import model.ShapeList;
 import view.interfaces.ICommand;
+import view.interfaces.IUndoable;
 
-public class DeleteShapeCommand implements ICommand {
+public class DeleteShapeCommand implements ICommand, IUndoable {
 
 	ShapeList my_shapelist;
 	ShapeList selected_shapelist;
@@ -11,7 +12,9 @@ public class DeleteShapeCommand implements ICommand {
 	public DeleteShapeCommand(ShapeList my_shapelist, ShapeList selected_shapelist) {
 		this.my_shapelist = my_shapelist;
 		this.selected_shapelist = selected_shapelist;
+		CommandHistory.add(this);
 	}
+	
 	@Override
 	public void run() {
 
@@ -23,6 +26,23 @@ public class DeleteShapeCommand implements ICommand {
 		}
 		
 		selected_shapelist.clear();
+	}
+	@Override
+	public void undo() {
+		// TODO Auto-generated method stub
+		
+	}
+	@Override
+	public void redo() {
+		
+		int counter;
+		for (counter = 0; counter < selected_shapelist.get_list_of_shapes().size(); counter++) {
+			my_shapelist.delete(selected_shapelist.get_list_of_shapes().get(counter), selected_shapelist.get_list_of_starting_coordinates().get(counter), selected_shapelist.get_list_of_ending_coordinates().get(counter));
+			my_shapelist.notifyObservers();
+		}
+		
+		selected_shapelist.clear();
+		
 	}
 		
 		

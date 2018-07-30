@@ -5,8 +5,9 @@ import model.ShapeConfiguration;
 import model.ShapeList;
 import view.gui.PaintCanvas;
 import view.interfaces.ICommand;
+import view.interfaces.IUndoable;
 
-public class MoveSelectedShapesCommand implements ICommand {
+public class MoveSelectedShapesCommand implements ICommand, IUndoable {
 	
 	PaintCanvas canvas;
 	Pair starting;
@@ -20,6 +21,8 @@ public class MoveSelectedShapesCommand implements ICommand {
 		this.ending = ending;
 		this.my_shapelist = my_shapelist;
 		this.selected_shapelist = selected_shapelist;
+		
+		CommandHistory.add(this);
 
 	}
 	
@@ -47,6 +50,19 @@ public class MoveSelectedShapesCommand implements ICommand {
 		
 		//notify observers
 		my_shapelist.notifyObservers();
+	}
+
+	@Override
+	public void undo() {
+
+		
+	}
+
+	@Override
+	public void redo() {
+
+		
+		
 	}
 
 }

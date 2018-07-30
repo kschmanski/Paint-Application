@@ -12,3 +12,5 @@
 /DeleteShapeCommand.class
 /CopyShapeCommand.class
 /PasteShapeCommand.class
+/UndoCommand.class
+/RedoCommand.class

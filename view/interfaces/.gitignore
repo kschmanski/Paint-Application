@@ -4,3 +4,4 @@
 /IUiModule.class
 /ICommand.class
 /IInsertionObserver.class
+/IUndoable.class
