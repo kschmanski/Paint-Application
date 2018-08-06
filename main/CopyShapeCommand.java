@@ -5,11 +5,11 @@ import view.interfaces.ICommand;
 
 public class CopyShapeCommand implements ICommand {
 
-	ShapeList my_shapelist;
+	ShapeList master_shapelist;
 	ShapeList selected_shapelist;
 	ShapeList clipboard_shapelist;
-	public CopyShapeCommand(ShapeList my_shapelist, ShapeList selected_shapelist, ShapeList clipboard_shapelist) {
-		this.my_shapelist = my_shapelist;
+	public CopyShapeCommand(ShapeList master_shapelist, ShapeList selected_shapelist, ShapeList clipboard_shapelist) {
+		this.master_shapelist = master_shapelist;
 		this.selected_shapelist = selected_shapelist;
 		this.clipboard_shapelist = clipboard_shapelist;
 	}

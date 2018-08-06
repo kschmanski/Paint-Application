@@ -12,16 +12,17 @@ public class AddSelectedShapesCommand implements ICommand {
 
 	Pair starting;
 	Pair ending;
-	ShapeList my_shapelist;
+	ShapeList master_shapelist;
 	ShapeList selected_shapelist;
 	
-	public AddSelectedShapesCommand (Pair starting, Pair ending, ShapeList my_shapelist, ShapeList selected_shapelist) {
+	public AddSelectedShapesCommand (Pair starting, Pair ending, ShapeList master_shapelist, ShapeList selected_shapelist) {
 		this.starting = starting;
 		this.ending = ending;
-		this.my_shapelist = my_shapelist;
+		this.master_shapelist = master_shapelist;
 		this.selected_shapelist = selected_shapelist;
 	}
 	
+	//adds our selected shapes to the "selected_shapelist" object
 	@Override
 	public void run() {
 		
@@ -31,7 +32,7 @@ public class AddSelectedShapesCommand implements ICommand {
 		int height = Math.max(ending.getY() - starting.getY(), starting.getY() - ending.getY());
 		
 		Rectangle selection_area = new Rectangle(starting_x, starting_y, width, height);
-		CollisionDetector cd = new CollisionDetector(selection_area, my_shapelist);
+		CollisionDetector cd = new CollisionDetector(selection_area, master_shapelist);
 		
 		int min_x = Math.min(starting.getX(), ending.getX());
 		int min_y = Math.min(starting.getY(), ending.getY());
@@ -42,11 +43,11 @@ public class AddSelectedShapesCommand implements ICommand {
 		Pair higher_selection_area_boundary = new Pair(max_x, max_y);
 		
 		int counter = 0;
-		while (counter < my_shapelist.list_of_shapes.size()) {
-			if (cd.collides(my_shapelist.list_of_starting_coordinates.get(counter), my_shapelist.list_of_ending_coordinates.get(counter), lower_selection_area_boundary, higher_selection_area_boundary)) {
+		while (counter < master_shapelist.list_of_shapes.size()) {
+			if (cd.collides(master_shapelist.list_of_starting_coordinates.get(counter), master_shapelist.list_of_ending_coordinates.get(counter), lower_selection_area_boundary, higher_selection_area_boundary)) {
 					
-				selected_shapelist.add_selection(my_shapelist.list_of_shapes.get(counter), my_shapelist.list_of_starting_coordinates.get(counter),
-						my_shapelist.list_of_ending_coordinates.get(counter));
+				selected_shapelist.add_selection(master_shapelist.list_of_shapes.get(counter), master_shapelist.list_of_starting_coordinates.get(counter),
+						master_shapelist.list_of_ending_coordinates.get(counter));
 			}
 			counter++;
 		}		

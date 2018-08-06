@@ -3,7 +3,6 @@ package model;
 import java.util.ArrayList;
 import view.gui.PaintCanvas;
 
-//subject class to inform observer
 public class ShapeList {
 	
 	PaintCanvas canvas;
@@ -12,7 +11,7 @@ public class ShapeList {
 	public ArrayList<Pair> list_of_ending_coordinates;
 	ShapeDrawer sd = new ShapeDrawer();
 	
-	//constructor
+	//constructor - holds three different arrays for each shape - the shape configuration, starting coordinates and ending coordinates
 	public ShapeList(PaintCanvas canvas) {
 		this.canvas = canvas;
 		list_of_shapes = new ArrayList<ShapeConfiguration>();
@@ -20,15 +19,15 @@ public class ShapeList {
 		list_of_ending_coordinates = new ArrayList<Pair>();
 	};
 
+	//add a shape to the shapelist
 	public void add(ShapeConfiguration config, Pair starting, Pair ending) {
 		list_of_shapes.add(config);
 		list_of_starting_coordinates.add(starting);
-		list_of_ending_coordinates.add(ending);	
-
+		list_of_ending_coordinates.add(ending);
 		notifyObservers();
 	}
 	
-	
+	//update the ShapeDrawer observer class that the canvas has changed
 	public void notifyObservers() {
 		sd.update(canvas, list_of_shapes, list_of_starting_coordinates, list_of_ending_coordinates);
 	}
@@ -42,14 +41,13 @@ public class ShapeList {
 	
 	public void delete(ShapeConfiguration config, Pair starting, Pair ending) {
 		int place = getArrayLocation(config, starting, ending);
-		
-		//need some kind of error handling for not deleting anything
 		list_of_shapes.remove(place);
 		list_of_starting_coordinates.remove(place);
 		list_of_ending_coordinates.remove(place);
 		notifyObservers();
 	}
 	
+	//deletes the contents of the entire ShapeList
 	public void clear() {
 		list_of_shapes.clear();
 		list_of_starting_coordinates.clear();
@@ -68,6 +66,7 @@ public class ShapeList {
 		return list_of_ending_coordinates;
 	}
 	
+	//gets the location in the array of the shape in question
 	public int getArrayLocation(ShapeConfiguration config, Pair starting, Pair ending) {
 		int i = 0;
 		while (i < list_of_shapes.size()) {

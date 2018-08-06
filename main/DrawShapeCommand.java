@@ -13,12 +13,12 @@ public class DrawShapeCommand implements ICommand, IUndoable {
 	ShapeConfiguration config;
 	Pair starting_coords;
 	Pair ending_coords;
-	ShapeList my_shapelist;
+	ShapeList master_shapelist;
 	
-	public DrawShapeCommand(PaintCanvas canvas, ShapeConfiguration config, ShapeList my_shapelist, Pair starting_coords, Pair ending_coords) {
+	public DrawShapeCommand(PaintCanvas canvas, ShapeConfiguration config, ShapeList master_shapelist, Pair starting_coords, Pair ending_coords) {
 		this.canvas = canvas;
 		this.config = config;
-		this.my_shapelist = my_shapelist;
+		this.master_shapelist = master_shapelist;
 		this.starting_coords = starting_coords;
 		this.ending_coords = ending_coords;
 		
@@ -28,13 +28,13 @@ public class DrawShapeCommand implements ICommand, IUndoable {
 	
 	@Override
 	public void run() {
-		my_shapelist.add(config, starting_coords, ending_coords);
+		master_shapelist.add(config, starting_coords, ending_coords);
 	}
 
 
 	@Override
 	public void undo() {
-		my_shapelist.delete(config, starting_coords, ending_coords);		
+		master_shapelist.delete(config, starting_coords, ending_coords);		
 	}
 
 

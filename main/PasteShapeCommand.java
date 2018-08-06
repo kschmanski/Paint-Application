@@ -9,13 +9,13 @@ import view.interfaces.IUndoable;
 public class PasteShapeCommand implements ICommand, IUndoable {
 	
 	PaintCanvas canvas;
-	ShapeList my_shapelist;
+	ShapeList master_shapelist;
 	ShapeList selected_shapelist;
 	ShapeList clipboard_shapelist;
 	
-	public PasteShapeCommand(PaintCanvas canvas, ShapeList my_shapelist, ShapeList selected_shapelist, ShapeList clipboard_shapelist) {
+	public PasteShapeCommand(PaintCanvas canvas, ShapeList master_shapelist, ShapeList selected_shapelist, ShapeList clipboard_shapelist) {
 		this.canvas = canvas;
-		this.my_shapelist = my_shapelist;
+		this.master_shapelist = master_shapelist;
 		this.selected_shapelist = selected_shapelist;
 		this.clipboard_shapelist = clipboard_shapelist;
 		
@@ -33,8 +33,8 @@ public class PasteShapeCommand implements ICommand, IUndoable {
 			int ending_x = clipboard_shapelist.list_of_ending_coordinates.get(counter).getX() - clipboard_shapelist.list_of_starting_coordinates.get(counter).getX();
 			int ending_y = clipboard_shapelist.list_of_ending_coordinates.get(counter).getY() - clipboard_shapelist.list_of_starting_coordinates.get(counter).getY();
 		
-			my_shapelist.add(clipboard_shapelist.get_list_of_shapes().get(counter), new Pair(starting_x, starting_y), new Pair(ending_x + starting_x, ending_y + starting_y));
-			my_shapelist.notifyObservers();
+			master_shapelist.add(clipboard_shapelist.get_list_of_shapes().get(counter), new Pair(starting_x, starting_y), new Pair(ending_x + starting_x, ending_y + starting_y));
+			master_shapelist.notifyObservers();
 		}
 	}
 
@@ -48,8 +48,8 @@ public class PasteShapeCommand implements ICommand, IUndoable {
 			int ending_x = clipboard_shapelist.list_of_ending_coordinates.get(counter).getX() - clipboard_shapelist.list_of_starting_coordinates.get(counter).getX();
 			int ending_y = clipboard_shapelist.list_of_ending_coordinates.get(counter).getY() - clipboard_shapelist.list_of_starting_coordinates.get(counter).getY();
 		
-			my_shapelist.delete(clipboard_shapelist.list_of_shapes.get(counter), new Pair(200, 200), new Pair(ending_x + starting_x, ending_y + starting_y));	
-			my_shapelist.notifyObservers();
+			master_shapelist.delete(clipboard_shapelist.list_of_shapes.get(counter), new Pair(200, 200), new Pair(ending_x + starting_x, ending_y + starting_y));	
+			master_shapelist.notifyObservers();
 		}
 		
 	}
@@ -64,8 +64,8 @@ public class PasteShapeCommand implements ICommand, IUndoable {
 			int ending_x = clipboard_shapelist.list_of_ending_coordinates.get(counter).getX() - clipboard_shapelist.list_of_starting_coordinates.get(counter).getX();
 			int ending_y = clipboard_shapelist.list_of_ending_coordinates.get(counter).getY() - clipboard_shapelist.list_of_starting_coordinates.get(counter).getY();
 		
-			my_shapelist.add(clipboard_shapelist.get_list_of_shapes().get(counter), new Pair(starting_x, starting_y), new Pair(ending_x + starting_x, ending_y + starting_y));
-			my_shapelist.notifyObservers();
+			master_shapelist.add(clipboard_shapelist.get_list_of_shapes().get(counter), new Pair(starting_x, starting_y), new Pair(ending_x + starting_x, ending_y + starting_y));
+			master_shapelist.notifyObservers();
 		}
 		
 	}

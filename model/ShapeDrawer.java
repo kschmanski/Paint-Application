@@ -23,8 +23,6 @@ public class ShapeDrawer implements IInsertionObserver {
 		graphics2d.setColor(Color.WHITE); //white color
         graphics2d.fillRect(0, 0, 10000, 10000);
       
-        
-        
 		//iterates over the list of our shapes to draw them on the canvas
 		while (counter < list_of_shapes.size()) {
 		
@@ -41,7 +39,7 @@ public class ShapeDrawer implements IInsertionObserver {
 						list_of_starting_coordinates.get(counter), list_of_ending_coordinates.get(counter));
 				break;
 			default:
-				throw new Error();
+				throw new Error("Unknown shape - unable to be drawn");
 			
 			
 	}

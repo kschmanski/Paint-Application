@@ -6,11 +6,11 @@ import view.interfaces.IUndoable;
 
 public class DeleteShapeCommand implements ICommand, IUndoable {
 
-	ShapeList my_shapelist;
+	ShapeList master_shapelist;
 	ShapeList selected_shapelist;
 	
-	public DeleteShapeCommand(ShapeList my_shapelist, ShapeList selected_shapelist) {
-		this.my_shapelist = my_shapelist;
+	public DeleteShapeCommand(ShapeList master_shapelist, ShapeList selected_shapelist) {
+		this.master_shapelist = master_shapelist;
 		this.selected_shapelist = selected_shapelist;
 		CommandHistory.add(this);
 	}
@@ -21,8 +21,8 @@ public class DeleteShapeCommand implements ICommand, IUndoable {
 		
 		int counter;
 		for (counter = 0; counter < selected_shapelist.get_list_of_shapes().size(); counter++) {
-			my_shapelist.delete(selected_shapelist.get_list_of_shapes().get(counter), selected_shapelist.get_list_of_starting_coordinates().get(counter), selected_shapelist.get_list_of_ending_coordinates().get(counter));
-			my_shapelist.notifyObservers();
+			master_shapelist.delete(selected_shapelist.get_list_of_shapes().get(counter), selected_shapelist.get_list_of_starting_coordinates().get(counter), selected_shapelist.get_list_of_ending_coordinates().get(counter));
+			master_shapelist.notifyObservers();
 		}
 		
 		//selected_shapelist.clear();
@@ -32,8 +32,8 @@ public class DeleteShapeCommand implements ICommand, IUndoable {
 	
 		int counter;
 		for (counter = 0; counter < selected_shapelist.get_list_of_shapes().size(); counter++) {
-			my_shapelist.add(selected_shapelist.get_list_of_shapes().get(counter), selected_shapelist.get_list_of_starting_coordinates().get(counter), selected_shapelist.get_list_of_ending_coordinates().get(counter));
-			my_shapelist.notifyObservers();
+			master_shapelist.add(selected_shapelist.get_list_of_shapes().get(counter), selected_shapelist.get_list_of_starting_coordinates().get(counter), selected_shapelist.get_list_of_ending_coordinates().get(counter));
+			master_shapelist.notifyObservers();
 		}
 		
 	}

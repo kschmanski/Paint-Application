@@ -2,20 +2,21 @@ package model;
 
 import view.gui.PaintCanvas;
 
+//class that holds the three shapelists we'll need to use
 public class ShapeListManager {
 
-	private ShapeList my_shapelist;
+	private ShapeList master_shapelist;
 	private ShapeList selected_shapelist;
 	private ShapeList clipboard_shapelist;
 	
 	public ShapeListManager(PaintCanvas canvas) {
-		my_shapelist = new ShapeList(canvas);
+		master_shapelist = new ShapeList(canvas);
 		selected_shapelist = new ShapeList(canvas);
 		clipboard_shapelist = new ShapeList(canvas);
 	}
 	
-	public ShapeList getMyShapeList() {
-		return my_shapelist;
+	public ShapeList getMasterShapeList() {
+		return master_shapelist;
 	}
 	
 	public ShapeList getSelectedShapeList() {
