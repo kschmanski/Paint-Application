@@ -19,7 +19,7 @@ public class ChooseStartAndEndPointModeDialog implements IDialogChoice<StartAndE
 
     @Override
     public String getDialogText() {
-        return "Select a shading type from the menu below:";
+        return "Select a start and end point mode from the menu below:";
     }
 
     @Override
