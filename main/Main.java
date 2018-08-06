@@ -5,6 +5,7 @@ import controller.IJPaintController;
 import controller.JPaintController;
 import model.MouseHandler;
 import model.ShapeList;
+import model.ShapeListManager;
 import model.persistence.ApplicationState;
 import view.gui.Gui;
 import view.gui.GuiWindow;
@@ -21,12 +22,14 @@ public class Main {
         
         //should create a holder class for these three shapelists
         
-    	ShapeList my_shapelist = new ShapeList(canvas);
-    	ShapeList selected_shapelist = new ShapeList(canvas);
-    	ShapeList clipboard_shapelist = new ShapeList(canvas);
+    	//ShapeList my_shapelist = new ShapeList(canvas);
+    	//ShapeList selected_shapelist = new ShapeList(canvas);
+    	//ShapeList clipboard_shapelist = new ShapeList(canvas);
     	
-    	canvas.addMouseListener(new MouseHandler(canvas, appState, my_shapelist, selected_shapelist));
-        IJPaintController controller = new JPaintController(uiModule, appState, my_shapelist, selected_shapelist, clipboard_shapelist, canvas);
+        ShapeListManager manager = new ShapeListManager(canvas);
+        
+    	canvas.addMouseListener(new MouseHandler(canvas, appState, manager.getMyShapeList(), manager.getSelectedShapeList()));
+        IJPaintController controller = new JPaintController(uiModule, appState, manager.getMyShapeList(), manager.getSelectedShapeList(), manager.getClipboardShapeList(), canvas);
         controller.setup();
       
      
