@@ -12,7 +12,6 @@ import view.interfaces.ICommand;
 
 public class MouseHandler extends MouseAdapter  {
 	
-	
 	PaintCanvas canvas;
 	ApplicationState a;
 	ShapeList master_shapelist;

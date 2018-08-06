@@ -7,8 +7,7 @@ public class ShapeConfiguration {
 	ShapeType shape_type;
 	ShapeShadingType shading_type;
 	
-	public ShapeConfiguration(ShapeType shape_type, ShapeColor primary_color, ShapeColor secondary_color,
-			ShapeShadingType shading_type) {
+	public ShapeConfiguration(ShapeType shape_type, ShapeColor primary_color, ShapeColor secondary_color, ShapeShadingType shading_type) {
 		this.shape_type = shape_type;
 		this.primary_color = primary_color;
 		this.secondary_color = secondary_color;

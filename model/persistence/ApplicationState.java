@@ -35,7 +35,6 @@ public class ApplicationState implements IApplicationState {
     @Override
     public void setActivePrimaryColor() {
         activePrimaryColor = uiModule.getDialogResponse(dialogProvider.getChoosePrimaryColorDialog());
-     // System.out.printf("we just set the active color to %s", activePrimaryColor.toString());
     }
 
     @Override

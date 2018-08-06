@@ -21,7 +21,7 @@ public class ShapeDrawer implements IInsertionObserver {
 		int counter = 0;
 		Graphics2D graphics2d = canvas.getGraphics2D();
 		graphics2d.setColor(Color.WHITE); //white color
-        graphics2d.fillRect(0, 0, 10000, 10000);
+        graphics2d.fillRect(0, 0, 10000, 10000);  //fills a white rectangle over the entire canvas
       
 		//iterates over the list of our shapes to draw them on the canvas
 		while (counter < list_of_shapes.size()) {
