@@ -21,7 +21,9 @@ public class DeleteShapeCommand implements ICommand, IUndoable {
 		
 		int counter;
 		for (counter = 0; counter < selected_shapelist.get_list_of_shapes().size(); counter++) {
-			master_shapelist.delete(selected_shapelist.get_list_of_shapes().get(counter), selected_shapelist.get_list_of_starting_coordinates().get(counter), selected_shapelist.get_list_of_ending_coordinates().get(counter));
+			
+			if (master_shapelist.getArrayLocation(selected_shapelist.get_list_of_shapes().get(counter), selected_shapelist.get_list_of_starting_coordinates().get(counter), selected_shapelist.get_list_of_ending_coordinates().get(counter)) > -1)
+				master_shapelist.delete(selected_shapelist.get_list_of_shapes().get(counter), selected_shapelist.get_list_of_starting_coordinates().get(counter), selected_shapelist.get_list_of_ending_coordinates().get(counter));
 			master_shapelist.notifyObservers();
 		}
 		
