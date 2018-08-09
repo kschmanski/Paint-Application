@@ -13,15 +13,15 @@ import view.interfaces.ICommand;
 public class MouseHandler extends MouseAdapter  {
 	
 	PaintCanvas canvas;
-	ApplicationState a;
+	ApplicationState state;
 	ShapeList master_shapelist;
 	ShapeList selected_shapelist;
 	static Pair starting;
 	static Pair ending;
 	
-	public MouseHandler(PaintCanvas canvas, ApplicationState a, ShapeList master_shapelist, ShapeList selected_shapelist) {
+	public MouseHandler(PaintCanvas canvas, ApplicationState state, ShapeList master_shapelist, ShapeList selected_shapelist) {
 		this.canvas = canvas;
-		this.a = a;
+		this.state = state;
 		this.master_shapelist = master_shapelist;
 		this.selected_shapelist = selected_shapelist;
 	};
@@ -42,10 +42,10 @@ public class MouseHandler extends MouseAdapter  {
 		int ending_y = e.getY();
 		ending = new Pair(ending_x, ending_y);
 		
-		switch(a.getActiveStartAndEndPointMode().toString()) {
+		switch(state.getActiveStartAndEndPointMode().toString()) {
 		
 		case "DRAW": {
-			ShapeConfiguration config = a.getCurrentShapeConfiguration();
+			ShapeConfiguration config = state.getCurrentShapeConfiguration();
 			command = new DrawShapeCommand(canvas, config, master_shapelist, starting, ending);	
 			break;
 		}
